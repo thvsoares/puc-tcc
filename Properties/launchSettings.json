@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "puc_tcc": {
+    "PucTcc": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
