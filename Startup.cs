@@ -40,7 +40,6 @@ namespace puc_tcc
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
