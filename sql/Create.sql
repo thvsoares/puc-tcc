@@ -1,10 +1,10 @@
 USE master;
 GO
-CREATE DATABASE TCC
+CREATE DATABASE TCC;
 /*ON (NAME = tcc_dat, FILENAME = 'C:\db\tccdat.mdf')
-LOG ON (NAME = tcc_log, FILENAME = 'C:\db\tcclog.ldf');
+LOG ON (NAME = tcc_log, FILENAME = 'C:\db\tcclog.ldf');*/
 GO
-USE TCC*/;
+USE TCC;
 GO
 
 CREATE TABLE Curso(
