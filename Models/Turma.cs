@@ -9,6 +9,6 @@ namespace PucTcc.Models
         public string Nome { get; set; }
         public int Vagas { get; set; }
         public Curso Curso { get; set; }
-        public IEnumerable<Aluno> Alunos { get; set; }
+        public IEnumerable<AlunoTurma> Alunos { get; set; }
     }
 }

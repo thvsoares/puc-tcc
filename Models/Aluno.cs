@@ -8,6 +8,6 @@ namespace PucTcc.Models
         public long IdCurso { get; set; }
         public string Nome { get; set; }
         public Curso Curso { get; set; }
-        public IEnumerable<Turma> Turmas { get; set; }
+        public IEnumerable<AlunoTurma> Turmas { get; set; }
     }
 }
