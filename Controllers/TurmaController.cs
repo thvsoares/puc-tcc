@@ -9,27 +9,20 @@ namespace PucTcc.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController : ControllerBase
+    public class TurmaController : ControllerBase
     {
         private readonly PucTccContext _context;
 
-        public AlunoController(PucTccContext context)
+        public TurmaController(PucTccContext context)
         {
             _context = context;
         }
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Aluno>> Get()
+        public ActionResult<IEnumerable<Turma>> Get()
         {
-            return _context.Alunos;
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<Aluno> Get(long id)
-        {
-            return _context.Alunos.FirstOrDefault(f => f.Id == id);
+            return _context.Turmas;
         }
     }
 }
