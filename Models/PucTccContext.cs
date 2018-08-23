@@ -12,20 +12,34 @@ namespace PucTcc.Models
         {
             modelBuilder.Entity<AlunoTurma>()
                 .HasKey(t => new { t.IdAluno, t.IdTurma });
-
             modelBuilder.Entity<AlunoTurma>()
                 .HasOne(pt => pt.Aluno)
                 .WithMany(p => p.Turmas)
                 .HasForeignKey(pt => pt.IdAluno);
-
             modelBuilder.Entity<AlunoTurma>()
                 .HasOne(pt => pt.Turma)
                 .WithMany(t => t.Alunos)
                 .HasForeignKey(pt => pt.IdTurma);
 
-            modelBuilder.Entity<Curso>().ToTable("Curso");
-            modelBuilder.Entity<Turma>().ToTable("Turma");
-            modelBuilder.Entity<Aluno>().ToTable("Aluno");
+            modelBuilder.Entity<Curso>()
+                .ToTable("Curso")
+                .HasKey(k => k.Id);
+
+            modelBuilder.Entity<Turma>()
+                .ToTable("Turma")
+                .HasKey(k => k.Id);
+            modelBuilder.Entity<Turma>()
+                .HasOne(p => p.Curso)
+                .WithMany()
+                .HasForeignKey(p => p.IdCurso);
+
+            modelBuilder.Entity<Aluno>()
+                .ToTable("Aluno")
+                .HasKey(k => k.Id);
+            modelBuilder.Entity<Aluno>()
+                .HasOne(p => p.Curso)
+                .WithMany()
+                .HasForeignKey(p => p.IdCurso);
         }
 
         public DbSet<Curso> Cursos { get; set; }
