@@ -11,6 +11,7 @@ namespace PucTcc.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AlunoTurma>()
+                .ToTable("AlunoTurma")
                 .HasKey(t => new { t.IdAluno, t.IdTurma });
             modelBuilder.Entity<AlunoTurma>()
                 .HasOne(pt => pt.Aluno)
@@ -45,5 +46,6 @@ namespace PucTcc.Models
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<AlunoTurma> AlunosTurmas { get; set; }
     }
 }
