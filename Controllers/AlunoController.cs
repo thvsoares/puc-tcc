@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PucTcc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PucTcc.Models;
 
 namespace PucTcc.Controllers
 {
@@ -18,18 +19,21 @@ namespace PucTcc.Controllers
             _context = context;
         }
 
-        // GET api/values
+
         [HttpGet]
         public ActionResult<IEnumerable<Aluno>> Get()
         {
             return _context.Alunos;
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Aluno> Get(long id)
         {
-            return _context.Alunos.FirstOrDefault(f => f.Id == id);
+            return _context.Alunos
+                .Include(c => c.Curso)
+                .Include(a => a.Turmas)
+                .ThenInclude(at => at.Turma)
+                .FirstOrDefault(f => f.Id == id);
         }
     }
 }
