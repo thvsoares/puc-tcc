@@ -7,9 +7,25 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/WebApi/PucTcc.csproj"
+                "${workspaceFolder}/puc-tcc.sln"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/WebApiTest/WebApiTest.csproj"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }
