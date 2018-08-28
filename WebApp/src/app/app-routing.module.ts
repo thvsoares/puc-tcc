@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AlunosComponent } from './alunos/alunos.component'
+
 const routes: Routes = [
-  { path: '', redirectTo: '/alunos', pathMatch: 'full' },
+  { path: 'alunos', component: AlunosComponent },
 ];
 
 @NgModule({
