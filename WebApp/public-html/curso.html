@@ -34,6 +34,13 @@
         </div>
     </nav>
 
+    <div class="alert alert-warning alert-dismissible fade" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <main role="main" class="container">
 
         <div class="starter-template">
@@ -42,11 +49,11 @@
                 <li class="list-group-item">
                     <div class="input-group row">
                         <input type="text" class="form-control col-md-1 col-sm-2" readonly data-bind='value: id'>
-                        <input type="text" class="form-control" placeholder="Curso" data-bind='textInput: nome'>
+                        <input type="text" class="form-control" placeholder="Curso" data-bind='textInput: nome, disable: processando'>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado">Aplicar</button>
-                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado, click: undoChanges">Desfazer</button>
-                            <button class="btn btn-outline-secondary" type="button">Remover</button>
+                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado, disable: processando">Aplicar</button>
+                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado, click: undoChanges, disable: processando">Desfazer</button>
+                            <button class="btn btn-outline-secondary" type="button" data-bind="click: remove, disable: processando">Remover</button>
                         </div>
                     </div>
                 </li>
@@ -54,6 +61,21 @@
         </div>
 
     </main><!-- /.container -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-bottom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#actions" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="actions">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-bind='click: addCourse'>Adicionar</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
