@@ -8,13 +8,24 @@ let curso = function (data, model) {
 
     self.modificado = ko.computed(() => self.nome() !== self.nomeOriginal, this);
     self.undoChanges = () => self.nome(self.nomeOriginal);
+    self.save = () => {
+        self.processando(true);
+        $.ajax({
+            url: 'http://localhost:5000/api/curso/' + self.id(),
+            method: 'PUT',
+            data: JSON.stringify(ko.toJS({ nome: self.nome() })),
+            dataType: 'json'
+        })
+        .done(() => self.processando(false))
+        .fail(() => { model.processando(false); self.nome('error'); });
+    }
     self.remove = () => {
         $.ajax({
-                url: 'http://localhost:5000/api/curso/' + self.id(),
-                method: 'DELETE'
-            })
-            .done(() => model.remove(self))
-            .fail(() => { model.processando(false); self.nome('error'); });
+            url: 'http://localhost:5000/api/curso/' + self.id(),
+            method: 'DELETE'
+        })
+        .done(() => model.remove(self))
+        .fail(() => { model.processando(false); self.nome('error'); });
     }
 }
 
@@ -33,15 +44,6 @@ let model = function () {
     }
 
     self.addCourse = () => self.courses.push(new curso({ id: 0, nome: '' }, self));
-
-    self.removeCourse = course => {
-        if (course.id()) {
-            course.processando(true);
-        }
-        else {
-            self.courses.remove(course);
-        }
-    }
 }
 
 let viewModel = new model();
