@@ -1,4 +1,13 @@
-let curso = function() {
+let curso = function (data) {
+    let self = this;
+    self.id = ko.observable(data.id);
+    self.nome = ko.observable(data.nome);
+    self.nomeOriginal = data.nome;
+
+    self.modificado = ko.computed(() => self.nome() !== self.nomeOriginal, this);
+}
+
+let model = function() {
     let self = this;
     self.courses = ko.observableArray();
 
@@ -7,12 +16,12 @@ let curso = function() {
         $.get('http://localhost:5000/api/curso')
             .done(data => {
                 data.forEach(item => {
-                    self.courses.push(item);
+                    self.courses.push(new curso(item));
                 });
             });
     }
 }
 
-let model = new curso();
-ko.applyBindings(model);
-model.getCourses();
+let viewModel = new model();
+ko.applyBindings(viewModel);
+viewModel.getCourses();

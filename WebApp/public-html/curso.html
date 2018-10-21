@@ -38,22 +38,19 @@
 
         <div class="starter-template">
             <h1>Cursos</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Curso</th>
-                        <!-- <th></th> -->
-                    </tr>
-                </thead>
-                <tbody data-bind='foreach: courses'>
-                    <tr>
-                        <td><span class='readonly' data-bind='text: id'></span></td>
-                        <td><input class='required' data-bind='value: nome' /></td>
-                        <!-- <td><a href='#' data-bind='click: $root.removeGift'>Remover</a></td> -->
-                    </tr>
-                </tbody>
-            </table>
+            <ul class="list-group" data-bind='foreach: courses'>
+                <li class="list-group-item">
+                    <div class="input-group row">
+                        <input type="text" class="form-control col-md-1 col-sm-2" readonly data-bind='value: id'>
+                        <input type="text" class="form-control" placeholder="Curso" data-bind='textInput: nome'>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado">Aplicar</button>
+                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado">Desfazer</button>
+                            <button class="btn btn-outline-secondary" type="button">Remover</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
 
     </main><!-- /.container -->
