@@ -42,10 +42,12 @@ namespace PucTcc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(builder => builder.WithOrigins("*"));
             }
             else
             {
                 app.UseHsts();
+                app.UseCors(builder => builder.WithOrigins("http://frontend"));
             }
 
             app.UseMvc();
