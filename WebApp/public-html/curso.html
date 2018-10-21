@@ -45,7 +45,7 @@
                         <input type="text" class="form-control" placeholder="Curso" data-bind='textInput: nome'>
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado">Aplicar</button>
-                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado">Desfazer</button>
+                            <button class="btn btn-outline-secondary" type="button" data-bind="visible: modificado, click: undoChanges">Desfazer</button>
                             <button class="btn btn-outline-secondary" type="button">Remover</button>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ let curso = function (data) {
     self.nomeOriginal = data.nome;
 
     self.modificado = ko.computed(() => self.nome() !== self.nomeOriginal, this);
+    self.undoChanges = () => self.nome(self.nomeOriginal);
 }
 
 let model = function() {
