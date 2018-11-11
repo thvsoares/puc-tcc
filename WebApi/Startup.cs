@@ -48,6 +48,7 @@ namespace PucTcc
                 app.UseHsts();
             }
 
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
             app.UseMvc();
         }
     }
