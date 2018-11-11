@@ -6,13 +6,15 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AlunosComponent } from './alunos/alunos.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { TurmasComponent } from './turmas/turmas.component';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlunosComponent,
     CursosComponent,
-    TurmasComponent
+    TurmasComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,
