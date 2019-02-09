@@ -39,11 +39,23 @@ namespace Tests
             // Get controls
             var inputName = _driver.FindElement(By.Name("ko_unique_1"));
             var buttonApply = _driver.FindElement(By.Name("ko_unique_2"));
+            var text = inputName.GetAttribute("value");
+            long test = 0;
 
-            Assert.AreEqual("Curso 1", inputName.GetAttribute("value"), "Incorrect name input inital state");
+            if (text.Contains(" selenium test "))
+            {
+                test = Convert.ToInt64(text.Substring(22));
+                Assert.IsTrue(text.StartsWith("Curso 1") && text.EndsWith(test.ToString()), "Incorrect name input inital state");
+            }
+            else
+            {
+                Assert.AreEqual("Curso 1", text, "Incorrect name input inital state");
+            }
+
             Assert.AreEqual(false, buttonApply.Displayed, "Incorrect apply button inital state");
 
-            inputName.SendKeys(" selenium test");
+            inputName.Clear();
+            inputName.SendKeys($"Curso 1 selenium test {++test}");
             Assert.AreEqual(true, buttonApply.Displayed, "The apply button should be visible after the text update");
 
             buttonApply.Click();
@@ -58,15 +70,8 @@ namespace Tests
             inputName = _driver.FindElement(By.Name("ko_unique_1"));
             buttonApply = _driver.FindElement(By.Name("ko_unique_2"));
 
-            Assert.AreEqual("Curso 1 selenium test", inputName.GetAttribute("value"), "The backend value should be updated");
+            Assert.AreEqual($"Curso 1 selenium test {test}", inputName.GetAttribute("value"), "The backend value should be updated");
             Assert.AreEqual(false, buttonApply.Displayed, "The apply button shuld be on the initial state");
-
-            // Reset the text
-            inputName.Clear();
-            inputName.SendKeys("Curso 1");
-            buttonApply.Click();
-            // Time to update the response
-            Thread.Sleep(1000);
         }
     }
 }
