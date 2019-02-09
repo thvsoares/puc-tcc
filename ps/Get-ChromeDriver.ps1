@@ -1,5 +1,5 @@
 $lastVersion = (Invoke-WebRequest -Uri 'http://chromedriver.storage.googleapis.com/LATEST_RELEASE' -UseBasicParsing).Content
-$binPath = '..\WebAppTest\bin\Debug\netcoreapp2.1'
+$binPath = '..\WebAppTest\bin\Debug\netcoreapp2.2'
 if (!(Test-Path $binPath)) {
     New-Item -Path $binPath
 }
