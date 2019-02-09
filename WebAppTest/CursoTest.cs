@@ -13,7 +13,9 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            _driver = new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory);
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.AddArguments("headless");
+            _driver = new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory, chromeOptions);
             _driver.Navigate().GoToUrl("http://localhost/curso.html");
         }
 
