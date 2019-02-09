@@ -11,21 +11,21 @@ let curso = function (data, model) {
     self.save = () => {
         self.processando(true);
         $.ajax({
-            url: 'http://localhost:5000/api/curso/' + self.id(),
+            url: 'http://backend:5000/api/curso/' + self.id(),
             method: 'PUT',
-            data: JSON.stringify(ko.toJS({ nome: self.nome() })),
-            dataType: 'json'
+            contentType: 'application/json; charset=UTF-8',
+            data: JSON.stringify(ko.toJS({ nome: self.nome() }))
         })
-        .done(() => self.processando(false))
-        .fail(() => { model.processando(false); self.nome('error'); });
+            .done(() => self.processando(false))
+            .fail(() => { self.processando(false); self.nome('error'); });
     }
     self.remove = () => {
         $.ajax({
-            url: 'http://localhost:5000/api/curso/' + self.id(),
+            url: 'http://backend:5000/api/curso/' + self.id(),
             method: 'DELETE'
         })
-        .done(() => model.remove(self))
-        .fail(() => { model.processando(false); self.nome('error'); });
+            .done(() => model.remove(self))
+            .fail(() => { self.processando(false); self.nome('error'); });
     }
 }
 
@@ -35,7 +35,7 @@ let model = function () {
 
     self.getCourses = () => {
         self.courses.removeAll();
-        $.get('http://localhost:5000/api/curso')
+        $.get('http://backend:5000/api/curso')
             .done(data => {
                 data.forEach(item => {
                     self.courses.push(new curso(item, self));
