@@ -32,6 +32,7 @@ services:
       - test
     depends_on:
       - frontend
+      - selenium
 
   selenium:
     image: selenium/standalone-chrome
