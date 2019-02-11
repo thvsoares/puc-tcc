@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Threading;
 
@@ -14,9 +15,8 @@ namespace Tests
         public void Setup()
         {
             var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("headless");
-            _driver = new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory, chromeOptions);
-            _driver.Navigate().GoToUrl("http://localhost/curso.html");
+            _driver = new RemoteWebDriver(new Uri("http://selenium:4444/wd/hub"), chromeOptions);
+            _driver.Navigate().GoToUrl("http://frontend/curso.html");
         }
 
         [TearDown]
