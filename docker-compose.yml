@@ -37,7 +37,7 @@ services:
     image: test
     volumes:
       - type: bind
-        source: out
+        source: ./out
         target: /app/TestResults/
     networks:
       - test
