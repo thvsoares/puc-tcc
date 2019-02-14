@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 services:
 
   database:
@@ -35,6 +35,10 @@ services:
   test:
     build: ./WebAppTest
     image: test
+    volumes:
+      - type: bind
+        source: out
+        target: /app/TestResults/
     networks:
       - test
     depends_on:
@@ -51,3 +55,6 @@ services:
 
 networks:
   test:
+
+volumes:
+  TestResults:
