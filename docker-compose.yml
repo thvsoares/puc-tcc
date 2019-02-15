@@ -55,6 +55,3 @@ services:
 
 networks:
   test:
-
-volumes:
-  TestResults:
