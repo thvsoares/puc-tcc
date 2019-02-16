@@ -16,7 +16,7 @@ namespace Tests
         {
             var chromeOptions = new ChromeOptions();
             _driver = new RemoteWebDriver(new Uri("http://selenium:4444/wd/hub"), chromeOptions);
-            _driver.Navigate().GoToUrl("http://frontend/curso.html");
+            _driver.Navigate().GoToUrl("http://frontend/curso2.html");
         }
 
         [TearDown]
